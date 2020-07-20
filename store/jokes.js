@@ -23,11 +23,13 @@ export const mutations = {
     if (targetJoke) {
       targetJoke.votes++;
     }
+    context.jokes.sort((a, b) => b.votes - a.votes);
   },
   downvote(context, jokeId) {
     const targetJoke = context.jokes.find((joke) => joke.id === jokeId);
     if (targetJoke) {
       targetJoke.votes--;
     }
+    context.jokes.sort((a, b) => b.votes - a.votes);
   },
 };
