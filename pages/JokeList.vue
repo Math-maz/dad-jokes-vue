@@ -3,7 +3,7 @@
     <joke-list-side-bar></joke-list-side-bar>
 
     <div class="joke-list">
-      <div v-if="loadingJokes" class="loading">CARREGANDO...</div>
+      <div v-if="loadingJokes" class="loading mt-2">CARREGANDO...</div>
       <ul v-else>
         <joke
           v-for="joke of jokes"

@@ -22,6 +22,10 @@
             rel: "stylesheet",
             href: "https://use.fontawesome.com/releases/v5.7.1/css/all.css",
           },
+          {
+            rel: "stylesheet",
+            href: "https://afeld.github.io/emoji-css/emoji.css",
+          },
         ],
       };
     },
