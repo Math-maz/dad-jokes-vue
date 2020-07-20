@@ -3,7 +3,7 @@
     <p>{{ title }}</p>
     <div class="votes-container">
       <i class="fas fa-arrow-up arrow-up" @click="upvote"></i>
-      <div class="likes">{{ numOfLikes }}</div>
+      <div :style="likesStyle">{{ numOfLikes }}</div>
       <div class="fas fa-arrow-down arrow-down" @click="downvote"></div>
     </div>
   </li>
@@ -22,12 +22,52 @@
         id: this.jokeId,
       };
     },
+    computed: {
+      numLikes() {
+        return this.numOfLikes;
+      },
+      likesStyle() {
+        return {
+          margin: "10px",
+          padding: "5px 0",
+          minWidth: "36px",
+          minHeight: "36px",
+          borderRadius: "100%",
+          textAlign: "center",
+          borderStyle: "solid",
+          borderWidth: "2px",
+          borderColor: this.getBorderColor(),
+        };
+      },
+    },
+    mounted() {
+      this.$nextTick(function () {
+        this.likesStyle.borderColor = this.getBorderColor();
+      });
+    },
     methods: {
       upvote() {
+        this.likesStyle.borderColor = this.getBorderColor();
         this.$store.commit("jokes/upvote", this.id);
       },
       downvote() {
+        this.likesStyle.borderColor = this.getBorderColor();
         this.$store.commit("jokes/downvote", this.id);
+      },
+      getBorderColor() {
+        const numOfLikes = Number(this.numOfLikes);
+        console.log(numOfLikes);
+        if (numOfLikes > 20) {
+          return "#19a654";
+        } else if (numOfLikes > 15) {
+          return "#bfc21b";
+        } else if (numOfLikes > 5) {
+          return "#c24d1b";
+        } else if (numOfLikes === 0) {
+          return "#ddd";
+        } else {
+          return "#bd1717";
+        }
       },
     },
   };
@@ -50,8 +90,6 @@
     min-height: 36px;
     padding: 5px 0;
     text-align: center;
-
-    border: 1px solid #ddd;
     border-radius: 100%;
   }
   .arrow-up,

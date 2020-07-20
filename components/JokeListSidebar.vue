@@ -46,6 +46,14 @@
 </script>
 
 <style scoped>
+  h1 {
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  span {
+    font-weight: bolder;
+  }
   .sidebar-root {
     height: 100%;
     width: 30%;

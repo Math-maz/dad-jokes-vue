@@ -33,6 +33,7 @@
         return this.$store.state.jokes.loadingJokes;
       },
     },
+
     async created() {
       this.$store.commit("jokes/setLoading", true);
       while (this.jokes.length < Number(this.numOfJokes)) {
@@ -62,7 +63,7 @@
 <style scoped>
   .joke-root {
     height: 80%;
-    width: 70%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;

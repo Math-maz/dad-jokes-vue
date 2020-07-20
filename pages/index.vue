@@ -9,6 +9,11 @@
   export default {
     name: "Index",
     components: { JokeList },
+    computed: {
+      numOfJokes() {
+        return this.$store.state.jokes.numOfJokes;
+      },
+    },
     head() {
       return {
         title: "Custom title!",
@@ -20,11 +25,6 @@
         ],
       };
     },
-    computed: {
-      numOfJokes() {
-        return this.$store.state.jokes.numOfJokes;
-      },
-    },
   };
 </script>
 
@@ -35,5 +35,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(
+      135deg,
+      rgba(179, 229, 252, 1) 0%,
+      rgba(179, 229, 252, 1) 50%,
+      rgba(240, 98, 146, 1) 50%,
+      rgba(240, 98, 146, 1) 100%
+    );
   }
 </style>
